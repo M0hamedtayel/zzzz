@@ -21,25 +21,23 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/">
-          <a className="flex items-center space-x-2">
-            <span className="text-2xl font-bold">m0hamedtayel</span>
-          </a>
+          <span className="text-2xl font-bold cursor-pointer">m0hamedtayel</span>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex md:items-center md:space-x-4">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
-              <a
+              <span
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
+                  "text-sm font-medium transition-colors hover:text-primary cursor-pointer",
                   location === item.href
                     ? "text-primary"
                     : "text-muted-foreground"
                 )}
               >
                 {item.label}
-              </a>
+              </span>
             </Link>
           ))}
         </div>
@@ -64,9 +62,9 @@ export default function Navbar() {
           <div className="flex flex-col space-y-4 pb-4">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
-                <a
+                <span
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
+                    "text-sm font-medium transition-colors hover:text-primary cursor-pointer",
                     location === item.href
                       ? "text-primary"
                       : "text-muted-foreground"
@@ -74,7 +72,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </a>
+                </span>
               </Link>
             ))}
           </div>
