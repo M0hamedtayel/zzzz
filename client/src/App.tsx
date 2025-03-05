@@ -13,9 +13,6 @@ import Blog from "@/pages/Blog";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
-// GitHub Pages base path configuration
-const basePath = import.meta.env.BASE_URL || "/";
-
 // Use hash-based routing for GitHub Pages
 const useHashLocation = () => {
   const [hash, setHash] = React.useState(window.location.hash.replace("#", "") || "/");
