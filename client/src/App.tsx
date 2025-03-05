@@ -15,19 +15,22 @@ import NotFound from "@/pages/not-found";
 
 // Use hash-based routing for GitHub Pages
 const useHashLocation = () => {
-  const [hash, setHash] = React.useState(window.location.hash.replace("#", "") || "/");
+  const [hash, setHash] = React.useState(window.location.hash.slice(1) || "/");
 
   React.useEffect(() => {
+    console.log("Current hash:", hash); // Debug log
     const handleHashChange = () => {
-      setHash(window.location.hash.replace("#", "") || "/");
+      const newHash = window.location.hash.slice(1) || "/";
+      console.log("Hash changed to:", newHash); // Debug log
+      setHash(newHash);
     };
 
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  // Make the return type compatible with wouter's BaseLocationHook
   const setHashPath = (to: string) => {
+    console.log("Setting hash to:", to); // Debug log
     window.location.hash = to;
     return undefined;
   };
