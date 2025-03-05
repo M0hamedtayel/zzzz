@@ -17,10 +17,14 @@ export default function Navbar() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/">
+        <Link href="/" onClick={handleNavClick}>
           <span className="text-2xl font-bold cursor-pointer">m0hamedtayel</span>
         </Link>
 
@@ -35,6 +39,7 @@ export default function Navbar() {
                     ? "text-primary"
                     : "text-muted-foreground"
                 )}
+                onClick={handleNavClick}
               >
                 {item.label}
               </span>
@@ -69,7 +74,7 @@ export default function Navbar() {
                       ? "text-primary"
                       : "text-muted-foreground"
                   )}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleNavClick}
                 >
                   {item.label}
                 </span>
