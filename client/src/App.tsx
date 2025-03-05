@@ -29,9 +29,13 @@ const useHashLocation = () => {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  return [hash, (to: string) => {
+  // Make the return type compatible with wouter's BaseLocationHook
+  const setHashPath = (to: string) => {
     window.location.hash = to;
-  }] as const;
+    return undefined;
+  };
+
+  return [hash, setHashPath] as [string, (path: string, ...args: any[]) => any];
 };
 
 function Router() {
